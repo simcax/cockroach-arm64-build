@@ -1,0 +1,13 @@
+kind: pipeline
+type: docker
+name: cockroach-arm64
+
+steps:
+- name: first build
+  image: ubuntu
+  environment:
+    DEBIAN_FRONTEND: noninteractive
+  commands:
+    - apt-get update
+    - apt-get -y upgrade 
+    - apt-get -y install gcc golang cmake autoconf wget bison libncurses-dev
