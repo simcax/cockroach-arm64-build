@@ -11,3 +11,6 @@ steps:
     - apt-get update
     - apt-get -y upgrade 
     - apt-get -y install gcc golang cmake autoconf wget bison libncurses-dev
+    - wget -qO- https://binaries.cockroachdb.com/cockroach-v20.2.8.src.tgz | tar  xvz
+    - cd cockroach-v20.2.8
+    - make build
