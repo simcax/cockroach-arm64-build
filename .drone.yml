@@ -6,7 +6,7 @@ platform:
   arch: arm64
 
 steps:
-- name: first build
+- name: Build Container
   image: ubuntu
   environment:
     DEBIAN_FRONTEND: noninteractive
@@ -17,3 +17,4 @@ steps:
     - wget -qO- https://binaries.cockroachdb.com/cockroach-v20.2.8.src.tgz | tar  xvz
     - cd cockroach-v20.2.8
     - make build
+    - make install
