@@ -15,4 +15,4 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker buildx build . --file Dockerfile --tag simcax:$(date +%s)
+      run: docker buildx build . --file Dockerfile --tag simcax:$(date +%s) --platform=linux/arm64
