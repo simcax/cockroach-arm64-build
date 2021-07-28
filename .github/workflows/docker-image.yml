@@ -14,8 +14,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Checkout 
+    - name: Build image
+      run: docker buildx build . --file Dockerfile --tag simcax:$(date +%s) --platform=linux/arm64 
+    - name: Docker Login
       run: docker login -u="${{ secrets.DOCKERUSERNAME }}" -p="${{ secrets.DOCKERPASSWORD }}"
+    - name: Docker Push
+      run: docker push simcax:$(date +%s)
     
-    - name: Build and push image
-      run: docker buildx build . --file Dockerfile --tag simcax:$(date +%s) --platform=linux/arm64 --push
