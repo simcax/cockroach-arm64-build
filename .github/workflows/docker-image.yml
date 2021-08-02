@@ -14,10 +14,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
+    - name: Define tag variables
+      run: |
+          echo "TAG=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
     - name: Build image
-      run: docker buildx build . --file Dockerfile --tag simcax:$(date +%s) --platform=linux/arm64 
+      timeout-minutes: 1440
+      run: docker buildx build . --file Dockerfile --tag simcax/cockroach:${{ env.TAG }} --platform=linux/arm64 
     - name: Docker Login
       run: docker login -u="${{ secrets.DOCKERUSERNAME }}" -p="${{ secrets.DOCKERPASSWORD }}"
     - name: Docker Push
-      run: docker push simcax:$(date +%s)
+      run: docker push simcax/cockroach:${{ env.TAG }}
     

@@ -1,10 +1,10 @@
-FROM ubuntu:latest as build
+FROM ubuntu:hirsute as build
 RUN apt-get update
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get -y upgrade
-RUN apt-get -y install gcc golang cmake autoconf wget bison libncurses-dev
-RUN wget -qO- https://binaries.cockroachdb.com/cockroach-v20.2.10.src.tgz | tar  xvz
-WORKDIR cockroach-v20.2.10
+RUN apt-get -y --fix-missing install gcc ccache cmake autoconf wget golang bison libncurses-dev build-essential
+RUN wget -qO- https://binaries.cockroachdb.com/cockroach-v21.1.5.src.tgz | tar  xvz
+WORKDIR cockroach-v21.1.5
 RUN make build
 RUN make install
 FROM ubuntu:latest
