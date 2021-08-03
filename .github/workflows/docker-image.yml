@@ -9,7 +9,7 @@ on:
 jobs:
 
   build:
-
+    timeout-minutes: 1440
     runs-on: self-hosted
 
     steps:
