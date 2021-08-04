@@ -3,8 +3,8 @@ RUN apt-get update
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get -y upgrade
 RUN apt-get -y --fix-missing install gcc ccache cmake autoconf wget golang bison libncurses-dev build-essential
-RUN wget -qO- https://binaries.cockroachdb.com/cockroach-v21.1.5.src.tgz | tar  xvz
-WORKDIR cockroach-v21.1.5
+RUN wget -qO- https://binaries.cockroachdb.com/cockroach-v21.1.6.src.tgz | tar  xvz
+WORKDIR cockroach-v21.1.6
 RUN make build
 RUN make install
 FROM ubuntu:latest
